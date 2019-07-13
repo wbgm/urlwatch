@@ -344,6 +344,7 @@ class BrowserJob(AsyncJob):
         context = yield from BrowserJob.browser.createIncognitoBrowserContext()
         page = yield from context.newPage()
         yield from page.goto(self.navigate)
+        yield from asyncio.sleep(5)
         content = yield from page.content()
         yield from context.close()
         return content
