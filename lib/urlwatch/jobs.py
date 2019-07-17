@@ -343,7 +343,7 @@ class BrowserJob(AsyncJob):
     def aretrieve(self, job_state):
         context = yield from BrowserJob.browser.createIncognitoBrowserContext()
         page = yield from context.newPage()
-        await page.setUserAgent("Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7")
+        yield from page.setUserAgent("Mozilla/5.0 (iPhone; U; CPU iPhone OS 4_0 like Mac OS X; en-us) AppleWebKit/532.9 (KHTML, like Gecko) Version/4.0.5 Mobile/8A293 Safari/6531.22.7")
         yield from page.goto(self.navigate)
         yield from asyncio.sleep(10)
         content = yield from page.content()
